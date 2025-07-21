@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faculty Advisor | NSU Communications Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    :root {
+      --primary-red: #dc2626;
+      --primary-red-dark: #991b1b;
+      --primary-red-light: #ef4444;
+      --dark-bg: #0f0f0f;
+      --dark-card: #1a1a1a;
+      --dark-border: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      --gradient-dark: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-red: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-red-light);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--gradient-dark);
+      margin-top: 80px;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(15, 15, 15, 0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Faculty Section */
+    .faculty-section {
+      padding: 6rem 0;
+    }
+
+    .faculty-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .faculty-content {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .faculty-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: sticky;
+      top: 120px;
+    }
+
+    .faculty-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 24px;
+    }
+
+    .faculty-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .faculty-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-red);
+      border-color: var(--primary-red);
+    }
+
+    .photo-container {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+      background: var(--gradient-primary);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 2rem;
+      background: white;
+      transition: transform 0.4s ease;
+    }
+
+    .faculty-card:hover .photo-container img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faculty-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .faculty-card .position {
+      color: var(--primary-red);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .faculty-card .department {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Info Section */
+    .info-section {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .info-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gradient-primary);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .info-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      background: rgba(220, 38, 38, 0.05);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .info-card:hover {
+      background: rgba(220, 38, 38, 0.1);
+      border-color: var(--primary-red);
+    }
+
+    .info-card h4 {
+      color: var(--primary-red);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .contact-info a {
+      color: var(--primary-red);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: var(--primary-red-light);
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(153, 27, 27, 0.05) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 20px;
+      padding: 3rem;
+      margin: 3rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '"';
+      position: absolute;
+      top: -1rem;
+      left: 2rem;
+      font-size: 8rem;
+      color: var(--primary-red);
+      opacity: 0.2;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      font-style: italic;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer */
+    .main-footer {
+      background: var(--gradient-dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary-red);
+    }
+
+    .footer-col p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--primary-red);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dark-border);
+      color: var(--text-muted);
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .faculty-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .faculty-card {
+        position: static;
+      }
+
+      .faculty-container {
+        padding: 0 1rem;
+      }
+
+      .info-section {
+        padding: 2rem;
+      }
+
+      .quote-section {
+        padding: 2rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/images/logo_white.png" alt="NSUCC Logo" class="nav-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="executives.html">Executives</a>
+          <div class="dropdown-content">
+            <a href="executives.html">Executive Body</a>
+            <a href="subexecutives.html">Sub-Executive Body</a>
+          </div>
+        </div>
+        <a href="facultyadvisor.html" class="active">Faculty Advisor</a>
+        <a href="events.html">Events</a>
+        <a href="partners.html">Our Partners</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Faculty Advisor</h1>
+      <p>Guiding NSU Communications Club with wisdom, integrity, and unwavering support for student excellence.</p>
+    </div>
+  </section>
+
+  <!-- Faculty Section -->
+  <section class="faculty-section">
+    <div class="faculty-container">
+      <div class="faculty-content">
+        <!-- Faculty Card -->
+        <div class="faculty-card" data-aos="fade-right">
+          <div class="photo-container">
+            <img src="assets/images/Faculty/saymamiss.png" alt="Ms. Sayma Ahmed">
+          </div>
+          <div class="card-content">
+            <h2>Ms. Sayma Ahmed</h2>
+            <p class="position">Junior Lecturer</p>
+            <p class="department">Department of English & Modern Languages<br>North South University</p>
+          </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-section" data-aos="fade-left">
+          <h3 class="section-title">About Our Faculty Advisor</h3>
+          
+          <p class="info-text">Ms. Sayma Ahmed serves as the guiding force behind the NSU Communications Club, bringing her extensive expertise in English literature and modern languages to foster excellence in communication among our students.</p>
+
+          <div class="quote-section">
+            <p class="quote-text">Communication is not just about speaking; it's about connecting minds, inspiring hearts, and building bridges between diverse perspectives.</p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+              <p><strong>Master of Arts in English</strong><br>Rajshahi University, Bangladesh</p>
+              <p><strong>Bachelor of Arts in English</strong><br>Rajshahi University, Bangladesh</p>
+            </div>
+
+            <div class="info-card">
+              <h4><i class="fas fa-envelope"></i> Contact Information</h4>
+              <div class="contact-info">
+                <a href="mailto:sayma.ahmed@northsouth.edu">sayma.ahmed@northsouth.edu</a>
+                <p><strong>Office:</strong> NAC Building</p>
+                <p><strong>Department:</strong> English & Modern Languages</p>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <h4><i class="fas fa-heart"></i> Her Impact</h4>
+              <p>Ms. Ahmed's dedication to nurturing communication skills and her commitment to student development makes her an invaluable mentor. Her guidance helps shape confident, articulate leaders who are prepared to make meaningful contributions to society.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/logo_white.png" alt="NSUCC Footer Logo" style="width: 80px; margin-bottom: 1rem;">
+        <h4>NSU Communications Club</h4>
+        <p>Room #NAC121<br>North South University<br>nsucommunicationsclub@gmail.com</p>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="executives.html">Executives</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/NSUCommunicationsClub" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/nsucommunicationsclub/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/company/nsucc" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NSU Communications Club. Designed with ❤️ by NSUCC</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(15, 15, 15, 0.98)';
+        navbar.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+      } else {
+        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

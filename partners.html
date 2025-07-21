@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Partners | NSU Communications Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    :root {
+      --primary-red: #dc2626;
+      --primary-red-dark: #991b1b;
+      --primary-red-light: #ef4444;
+      --dark-bg: #0f0f0f;
+      --dark-card: #1a1a1a;
+      --dark-border: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      --gradient-dark: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-red: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation - Same as previous */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-red-light);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--gradient-dark);
+      margin-top: 80px;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(15, 15, 15, 0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Partners Section */
+    .partners-section {
+      padding: 6rem 0;
+    }
+
+    .partners-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .partner-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 20px;
+    }
+
+    .partner-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-red);
+      border-color: var(--primary-red);
+    }
+
+    .partner-logo {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .partner-card:hover .partner-logo {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .partner-logo img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .partner-card:hover .partner-logo img {
+      filter: grayscale(0%);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 24px;
+      padding: 4rem 2rem;
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      padding: 2rem;
+      background: rgba(220, 38, 38, 0.05);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      background: rgba(220, 38, 38, 0.1);
+      border-color: var(--primary-red);
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Partnership Benefits */
+    .benefits-section {
+      margin: 4rem 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .benefit-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-red);
+      box-shadow: var(--shadow-red);
+    }
+
+    .benefit-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-card h4 {
+      font-size: 1.3rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-card p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(153, 27, 27, 0.05) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.2);
+      border-radius: 24px;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-red);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 35px 60px -12px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Footer - Same as previous */
+    .main-footer {
+      background: var(--gradient-dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary-red);
+    }
+
+    .footer-col p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--primary-red);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dark-border);
+      color: var(--text-muted);
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .partners-container {
+        padding: 0 1rem;
+      }
+
+      .partners-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/images/logo_white.png" alt="NSUCC Logo" class="nav-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="executives.html">Executives</a>
+          <div class="dropdown-content">
+            <a href="executives.html">Executive Body</a>
+            <a href="subexecutives.html">Sub-Executive Body</a>
+          </div>
+        </div>
+        <a href="facultyadvisor.html">Faculty Advisor</a>
+        <a href="events.html">Events</a>
+        <a href="partners.html" class="active">Our Partners</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Our Partners</h1>
+      <p>We proudly acknowledge the valued partnerships that have supported our mission of excellence in communication and student leadership. Together, we create opportunities that empower the next generation of leaders.</p>
+    </div>
+  </section>
+
+  <!-- Partners Section -->
+  <section class="partners-section">
+    <div class="partners-container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Trusted Partners</h2>
+        <p class="section-subtitle">Organizations that believe in our vision and support our journey toward excellence</p>
+      </div>
+
+      <div class="partners-grid">
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="partner-logo">
+            <img src="assets/images/partners/uber.svg" alt="Uber">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="partner-logo">
+            <img src="assets/images/partners/TBS.png" alt="TBS">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="partner-logo">
+            <img src="assets/images/partners/DB.png" alt="Dhaka Bank">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="partner-logo">
+            <img src="assets/images/partners/GBL.jpg" alt="GBL">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="partner-logo">
+            <img src="assets/images/partners/GO.jpg" alt="GO">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="partner-logo">
+            <img src="assets/images/partners/Well.png" alt="WellFood">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="partner-logo">
+            <img src="assets/images/partners/Kang.png" alt="Kangaroo">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="450">
+          <div class="partner-logo">
+            <img src="assets/images/partners/BI.jpg" alt="BI">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="partner-logo">
+            <img src="assets/images/partners/VG.jpg" alt="Viewsonic">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="550">
+          <div class="partner-logo">
+            <img src="assets/images/partners/UCC.jpeg" alt="UCC">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="partner-logo">
+            <img src="assets/images/partners/wander.jpg" alt="Wander">
+          </div>
+        </div>
+        <div class="partner-card" data-aos="fade-up" data-aos-delay="650">
+          <div class="partner-logo">
+            <img src="assets/images/partners/ggg.png" alt="GG">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="section-title">Partnership Impact</h3>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Active Partners</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Collaborative Events</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">1000+</span>
+            <span class="stat-label">Students Benefited</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Years of Partnership</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits Section -->
+      <div class="benefits-section">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">Partnership Benefits</h2>
+          <p class="section-subtitle">What our partnerships bring to the NSUCC community</p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="benefit-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h4>Professional Networking</h4>
+            <p>Direct access to industry professionals and career opportunities through our partner organizations.</p>
+          </div>
+          
+          <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="benefit-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>Skill Development</h4>
+            <p>Workshops, training sessions, and mentorship programs designed to enhance professional skills.</p>
+          </div>
+          
+          <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="benefit-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h4>Event Sponsorship</h4>
+            <p>Financial and logistical support for our events, enabling us to deliver exceptional experiences.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="cta-section" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="cta-title">Interested in Partnership?</h3>
+        <p class="cta-text">Join our network of esteemed partners and help us shape the future of communication excellence at NSU.</p>
+        <a href="mailto:nsucommunicationsclub@gmail.com" class="cta-btn">
+          <span>Get in Touch</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/logo_white.png" alt="NSUCC Footer Logo" style="width: 80px; margin-bottom: 1rem;">
+        <h4>NSU Communications Club</h4>
+        <p>Room #NAC121<br>North South University<br>nsucommunicationsclub@gmail.com</p>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="executives.html">Executives</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/NSUCommunicationsClub" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/nsucommunicationsclub/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/company/nsucc" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NSU Communications Club. Designed with ❤️ by NSUCC</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(15, 15, 15, 0.98)';
+        navbar.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+      } else {
+        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

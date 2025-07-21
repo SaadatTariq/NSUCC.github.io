@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sub-Executive Body | NSU Communications Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+    }
+    .navbar {
+      background: linear-gradient(to right, #1f0000, #4b0000);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      height: 90px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-links a,
+    .nav-links .dropdown {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a:hover,
+    .nav-links a.font-bold,
+    .nav-links .dropdown:hover > a {
+      color: #ff4d4d;
+    }
+    .dropdown {
+      position: relative;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #2a2a2a;
+      min-width: 180px;
+      z-index: 1;
+      top: 100%;
+      left: 0;
+      border-radius: 6px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .dropdown-content a {
+      color: #fff;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #3a0000;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .hero-section {
+      background: linear-gradient(to right, #2a0000, #1a0000);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero-section h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+    .card {
+      background: linear-gradient(to bottom right, #2a2a2a, #4a0000);
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.2);
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(255, 0, 0, 0.4);
+    }
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .card h3 {
+      margin: 0.75rem 0 0.25rem;
+      color: #ff4d4d;
+    }
+    .card p {
+      color: #ddd;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+</style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html"><img src="assets/images/logo_white.png" alt="NSUCC Logo" class="nav-logo"></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <div class="dropdown">
+        <a href="executives.html">Executives</a>
+        <div class="dropdown-content">
+          <a href="executives.html">Executive Body</a>
+          <a href="subexecutives.html">Sub-Executive Body</a>
+        </div>
+      </div>
+      <a href="facultyadvisor.html">Faculty Advisor</a>
+      <a href="events.html">Events</a>
+      <a href="partners.html">Our Partners</a>
+    </nav>
+  </header>
+
+  <section class="hero-section">
+    <h1>Sub-Executive Body</h1>
+    <h2>For the Fiscal Year (2024-2025)</h2>
+    <p>Meet the passionate individuals supporting the vision of NSUCC.</p>
+  </section>
+
+  <section class="gallery">
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/1.jpg" alt="Abed Al Tawwab">
+    <h3>Abed Al Tawwab</h3>
+    <p>Photography, Performance, Writing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/2.jpg" alt="Aurpita Das Aurpa">
+    <h3>Aurpita Das Aurpa</h3>
+    <p>Decor, Graphics</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/3.jpg" alt="Fabiha Rahman Rimi">
+    <h3>Fabiha Rahman Rimi</h3>
+    <p>Admin, HR, Decor, PR & Marketing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/4.jpg" alt="Fabliha Anbar Riadh">
+    <h3>Fabliha Anbar Riadh</h3>
+    <p>Admin, Decor, Sponsor, Writing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/5.jpg" alt="Farhan Mubtashim Khan">
+    <h3>Farhan Mubtashim Khan</h3>
+    <p>Admin, Event Management, Logistics</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/6.jpg" alt="Kazi Sabid Kabir">
+    <h3>Kazi Sabid Kabir</h3>
+    <p>Decor, Event Management, HR, PR & Marketing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/7.jpg" alt="Muhammad Tajwar Jahin">
+    <h3>Muhammad Tajwar Jahin</h3>
+    <p>Graphics, HR, Logistics, Performance</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/8.jpg" alt="Muntaha Mahbub Riha">
+    <h3>Muntaha Mahbub Riha</h3>
+    <p>Admin, Event Management, Photography</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/9.jpg" alt="Nihal Fardin Khan">
+    <h3>Nihal Fardin Khan</h3>
+    <p>Event Management, HR</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/10.jpg" alt="Rakib Ahmed Redwan">
+    <h3>Rakib Ahmed Redwan</h3>
+    <p>Performance, Sponsor, PR & Marketing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/11.jpg" alt="Sheikh Abdullah Al Arafat">
+    <h3>Sheikh Abdullah Al Arafat</h3>
+    <p>Sponsor, Event Management, PR & Marketing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/12.jpg" alt="Syed Mohaiminul Islam Saurav">
+    <h3>Syed Mohaiminul Islam Saurav</h3>
+    <p>Decor, Graphics, Logistics</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/13.jpg" alt="Tanzeem Haque">
+    <h3>Tanzeem Haque</h3>
+    <p>HR, Logistics, Performance, Writing</p>
+  </div>
+  <div class="card" data-aos="fade-up">
+    <img src="assets/images/subexecutives/14.jpg" alt="Tasmia Arba Nikita">
+    <h3>Tasmia Arba Nikita</h3>
+    <p>PR & Marketing, Writing, Photography</p>
+  </div>
+</section>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

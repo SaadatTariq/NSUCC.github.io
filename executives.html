@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Body | NSU Communications Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    :root {
+      --primary-red: #dc2626;
+      --primary-red-dark: #991b1b;
+      --primary-red-light: #ef4444;
+      --dark-bg: #0f0f0f;
+      --dark-card: #1a1a1a;
+      --dark-border: #2a2a2a;
+      --text-primary: #ffffff;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --gradient-primary: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+      --gradient-dark: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-red: 0 25px 50px -12px rgba(220, 38, 38, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Navigation - Same as previous */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-red-light);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--gradient-dark);
+      margin-top: 80px;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(15, 15, 15, 0.4) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+    }
+
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section h2 {
+      font-size: 1.5rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-section p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Executive Gallery */
+    .executive-section {
+      padding: 6rem 0;
+    }
+
+    .executive-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .executive-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .executive-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .executive-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      border-radius: 24px;
+    }
+
+    .executive-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .executive-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-red);
+      border-color: var(--primary-red);
+    }
+
+    .photo-container {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background: var(--gradient-primary);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .executive-card:hover .photo-container img {
+      transform: scale(1.05);
+    }
+
+    .photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .executive-card:hover .photo-overlay {
+      opacity: 1;
+    }
+
+    .card-content {
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .executive-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .executive-card .position {
+      color: var(--primary-red);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--dark-border);
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: transparent;
+      border: 2px solid var(--dark-border);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .socials a:hover {
+      background: var(--primary-red);
+      border-color: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Footer - Same as previous */
+    .main-footer {
+      background: var(--gradient-dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 4rem 0 2rem;
+      margin-top: 6rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--primary-red);
+    }
+
+    .footer-col p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--primary-red);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--dark-border);
+      color: var(--text-muted);
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .executive-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .executive-container {
+        padding: 0 1rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/images/logo_white.png" alt="NSUCC Logo" class="nav-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="executives.html" class="active">Executives</a>
+          <div class="dropdown-content">
+            <a href="executives.html">Executive Body</a>
+            <a href="subexecutives.html">Sub-Executive Body</a>
+          </div>
+        </div>
+        <a href="facultyadvisor.html">Faculty Advisor</a>
+        <a href="events.html">Events</a>
+        <a href="partners.html">Our Partners</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Executive Body</h1>
+      <h2>Fiscal Year 2024-2025</h2>
+      <p>The visionary leaders steering NSU Communications Club toward excellence and innovation.</p>
+    </div>
+  </section>
+
+  <!-- Executive Gallery -->
+  <section class="executive-section">
+    <div class="executive-container">
+      <div class="executive-gallery">
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="photo-container">
+            <img src="assets/images/executives/President.png" alt="Md Saadat Tariq">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Md Saadat Tariq</h2>
+            <p class="position">President</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="photo-container">
+            <img src="assets/images/executives/Vice-Precident.png" alt="Saiba Adnan">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Saiba Adnan</h2>
+            <p class="position">Vice-President</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="photo-container">
+            <img src="assets/images/executives/General Secretary.png" alt="Isnat Hossain Rijon">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Isnat Hossain Rijon</h2>
+            <p class="position">General Secretary</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="photo-container">
+            <img src="assets/images/executives/Treasurer.png" alt="Annan Rahman Sahil">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Annan Rahman Sahil</h2>
+            <p class="position">Treasurer</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="photo-container">
+            <img src="assets/images/executives/Joint Secretary (Internal).png" alt="Armeen Hossain">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Armeen Hossain</h2>
+            <p class="position">Joint Secretary - Internal</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="executive-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="photo-container">
+            <img src="assets/images/executives/Joint Secretary (External).png" alt="Atin Annan Al Haque">
+            <div class="photo-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h2>Atin Annan Al Haque</h2>
+            <p class="position">Joint Secretary - External</p>
+            <div class="socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+        <img src="assets/images/logo_white.png" alt="NSUCC Footer Logo" style="width: 80px; margin-bottom: 1rem;">
+        <h4>NSU Communications Club</h4>
+        <p>Room #NAC121<br>North South University<br>nsucommunicationsclub@gmail.com</p>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="executives.html">Executives</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/NSUCommunicationsClub" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://www.instagram.com/nsucommunicationsclub/" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/company/nsucc" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NSU Communications Club. Designed with ❤️ by NSUCC</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out-cubic',
+      once: true,
+      offset: 100
+    });
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(15, 15, 15, 0.98)';
+        navbar.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+      } else {
+        navbar.style.background = 'rgba(15, 15, 15, 0.95)';
+        navbar.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

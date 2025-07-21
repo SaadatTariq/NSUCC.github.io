@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recruitment | NSU Communications Club</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --adventure-gold: #f7c873;
+      --adventure-gold-dark: #d6a547;
+      --adventure-brown: #3b2211;
+      --adventure-bg: #19110b;
+      --adventure-scroll: #f6efdf;
+      --adventure-red: #c47b44;
+      --adventure-shadow: 0 3px 42px #c4974755;
+      --pirate-title-shadow: 0 3px 32px #2e2209bb, 0 0 25px #fbe6b38b;
+    }
+
+    body {
+      background: linear-gradient(120deg, #1a140e 0%, #2e1b08 100%);
+      font-family: 'Playfair Display', serif;
+      color: #ede6d6;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero-section {
+      min-height: 100vh;
+      width: 100vw;
+      background: url('assets/images/recruitment-banner.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 4px solid var(--adventure-gold);
+      box-shadow: 0 7px 42px #8a6722bb;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(102deg, #18110b 60%, #5f4a26c9 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2.5rem 1.5rem 4rem 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Pirata One', cursive;
+      font-size: clamp(2.9rem, 7vw, 4.7rem);
+      color: var(--adventure-gold);
+      letter-spacing: 2px;
+      text-shadow: var(--pirate-title-shadow);
+      margin-bottom: 0.3em;
+      line-height: 1.03;
+      filter: drop-shadow(0 2px 13px #2c1702);
+      font-variant: small-caps;
+    }
+
+    .hero-tagline {
+      font-family: 'Pirata One', cursive;
+      color: var(--adventure-gold-dark);
+      background: rgba(37, 26, 7, 0.38);
+      display: inline-block;
+      border-radius: 10px;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      padding: 0.24em 1.1em 0.18em 1.1em;
+      text-shadow: 2px 2px 10px #321e06;
+      font-variant: small-caps;
+      border-bottom: 2px dashed var(--adventure-gold-dark);
+    }
+
+    .hero-description {
+      color: #fffbe3;
+      font-size: 1.15rem;
+      background: rgba(67, 54, 24, 0.39);
+      border-radius: 8px;
+      display: inline-block;
+      padding: 0.5em 1.4em;
+      margin-top: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      box-shadow: var(--adventure-shadow);
+    }
+
+    .hero-items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2.1em;
+      gap: 2.8em;
+    }
+
+    .decor-item {
+      width: 64px;
+      height: 64px;
+      filter: drop-shadow(0 2px 8px #00000044);
+      opacity: 0.93;
+      transition: transform 0.3s;
+      z-index: 2;
+    }
+
+    .decor-item:hover {
+      transform: scale(1.08) rotate(-8deg);
+    }
+
+    .adventure-btn {
+      margin-top: 2.5em;
+      font-family: 'Pirata One', cursive;
+      font-size: 1.45rem;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #f7c873 0%, #f3ca85 80%, #caa13e 100%);
+      color: #53330f;
+      padding: 1.08em 2.3em;
+      border: 2.5px solid #b9952a;
+      border-radius: 46px;
+      box-shadow: 0 3px 22px #b5831e73;
+      cursor: pointer;
+      text-shadow: 0 2px 3px #fff1cc;
+      transition: all 0.24s cubic-bezier(.5, .6, .33, 1.2);
+      font-variant: small-caps;
+    }
+
+    .adventure-btn:hover {
+      background: #fff2c9;
+      color: #7a550c;
+      box-shadow: 0 8px 32px #b4955a77;
+      letter-spacing: 1.7px;
+      transform: scale(1.05);
+    }
+
+    /* Parchment-style Section */
+    .parchment-section {
+      background: linear-gradient(109deg, #f3e9d1dd 80%, #ebd39c55 100%);
+      border-radius: 22px;
+      box-shadow: 0 1px 24px #c6a23a28;
+      border: 2.5px solid #cfa6411b;
+      margin: 4.4em auto 2.2em auto;
+      padding: 2.3em 1.5em 2.5em 1.5em;
+      max-width: 1000px;
+      backdrop-filter: blur(1px);
+      color: #52360d;
+    }
+
+    .parchment-header {
+      font-family: 'Pirata One', cursive;
+      font-size: 2.3rem;
+      color: var(--adventure-brown);
+      text-align: center;
+      margin-bottom: 0.45em;
+      letter-spacing: 1.2px;
+      text-shadow: 2px 2px 10px #debf7b8c;
+      font-variant: small-caps;
+    }
+
+    .parchment-subtitle {
+      color: #9c6e1e;
+      text-align: center;
+      font-size: 1.17rem;
+      margin-bottom: 2em;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4em;
+    }
+
+    .feature-card {
+      background: rgba(255, 236, 179, 0.22);
+      border: 2px dashed #b5954a45;
+      border-radius: 13px;
+      padding: 2.1em 1.4em;
+      text-align: center;
+      color: #3a2508;
+      box-shadow: 0 2px 10px #ad965a28;
+      position: relative;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.07em;
+      transition: transform 0.21s cubic-bezier(.5, .7, .33, 1.1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      background: #ffeab6c0;
+      color: #a07a29;
+    }
+
+    .feature-icon {
+      font-size: 2.35rem;
+      margin-bottom: 0.7em;
+      filter: drop-shadow(0 2px 6px #e7c075c2);
+      color: #e7c075;
+    }
+
+    .feature-title {
+      font-family: 'Pirata One', cursive;
+      font-size: 1.25rem;
+      margin-bottom: 0.6em;
+      color: #a78c46;
+      font-variant: small-caps;
+    }
+
+    /* Treasure Hunt Game */
+    .treasure-game-section {
+      background: linear-gradient(110deg, #faeed7e6 80%, #f3dcaaaf 100%);
+      border-radius: 20px;
+      box-shadow: 0 2px 22px #e5c6614a;
+      border: 2px solid #cfa6411b;
+      margin: 4.4em auto 2.2em auto;
+      padding: 2.3em 1.5em 2.5em 1.5em;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      color: #5a440f;
+    }
+
+    .treasure-game-header {
+      font-family: 'Pirata One', cursive;
+      font-size: 2.1rem;
+      color: #2b1806;
+      text-align: center;
+      margin-bottom: 0.7em;
+      letter-spacing: 1.1px;
+      text-shadow: 2px 2px 8px #99752353;
+      font-variant: small-caps;
+    }
+
+    .riddle {
+      background: rgba(244, 221, 138, 0.25);
+      border-left: 6px solid var(--adventure-gold-dark);
+      margin: 0 auto 1.8em auto;
+      max-width: 520px;
+      font-style: italic;
+      font-size: 1.15em;
+      color: #846015;
+      padding: 1em 1.3em;
+      border-radius: 9px;
+      box-shadow: 0 1px 10px #cfb97233;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .riddle-input-group {
+      margin: 1.2em 0 2em 0;
+      text-align: center;
+    }
+
+    .riddle-input {
+      font-size: 1.07em;
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      border: 2px solid #c9a862;
+      margin-right: 0.6em;
+      background: #fffbe7;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .riddle-btn {
+      font-family: 'Pirata One', cursive;
+      font-size: 1em;
+      background: var(--adventure-gold);
+      color: #3b2c08;
+      border: 2px solid #bca35b;
+      border-radius: 6px;
+      padding: 0.35em 1.1em;
+      cursor: pointer;
+      transition: background 0.17s;
+    }
+
+    .riddle-btn:hover {
+      background: #fae1a2;
+    }
+
+    .treasure-game-status {
+      text-align: center;
+      margin: 1.2em 0 1.5em 0;
+      color: #a58531;
+      font-size: 1.15rem;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+    }
+
+    .treasure-item {
+      position: fixed;
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      z-index: 1002;
+      filter: drop-shadow(0 1px 9px #000a);
+      opacity: 0.88;
+      transition: transform 0.16s;
+      animation: sparkle 1.3s infinite alternate;
+    }
+
+    .treasure-item.found {
+      opacity: 0.36;
+      filter: grayscale(1) blur(2px) drop-shadow(0 1px 5px #e3d6aa);
+      pointer-events: none;
+      animation: none;
+      transform: scale(1.13) rotate(-10deg);
+    }
+
+    @keyframes sparkle {
+      0% {
+        filter: drop-shadow(0 0 10px #ffe470bb);
+      }
+
+      100% {
+        filter: drop-shadow(0 0 2px #ffe470);
+      }
+    }
+
+    .game-success {
+      color: #356d22;
+      background: #fcf3dcf2;
+      padding: 0.8em 1.5em;
+      border-radius: 9px;
+      font-size: 1.28rem;
+      font-weight: 600;
+      box-shadow: 0 3px 12px #ecd88655;
+      margin: 2.1em 0 1.3em 0;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      border: 1.7px solid #d2b453;
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
+    .main-footer {
+      background: #18110b;
+      color: #bca86d;
+      padding: 2em 0 0.8em 0;
+      text-align: center;
+      font-size: 1.07rem;
+      font-family: 'Playfair Display', serif;
+      margin-top: 4em;
+      border-top: 2px solid #c1b16433;
+      letter-spacing: 1.2px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .parchment-header {
+        font-size: 1.3rem;
+      }
+
+      .parchment-section,
+      .treasure-game-section {
+        padding: 1em 0.2em;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .decor-item {
+        width: 42px;
+        height: 42px;
+      }
+
+      .treasure-item {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-up">
+      <div class="hero-title">Recruitment Summer 2025</div>
+      <div class="hero-tagline">Let the hunt begin</div><br>
+      <div class="hero-description">
+        Embark on a quest of discovery with the NSU Communications Club.<br>
+        <b>20th - 24th July 2025 | North South University Plaza</b>
+      </div>
+      <div class="hero-items">
+        <img src="/Users/mdsaadattariq/Desktop/Random Folders/Website/assets/compass.png" class="decor-item"
+          alt="Compass">
+        <img src="/Users/mdsaadattariq/Desktop/Random Folders/Website/assets/monocolor.png" class="decor-item"
+          alt="Binoculars">
+        <img src="/Users/mdsaadattariq/Desktop/Random Folders/Website/assets/scroll.png" class="decor-item"
+          alt="Scroll">
+        <img src="/Users/mdsaadattariq/Desktop/Random Folders/Website/assets/quill.png" class="decor-item"
+          alt="Feather Quill">
+      </div>
+      <button class="adventure-btn" onclick="window.open('https://forms.gle/rvyXmmsRW8otrKTJ8', '_blank')">
+        Chart Your Course
+      </button>
+
+    </div>
+  </section>
+
+  <!-- Features / Why Join Section -->
+  <section class="parchment-section" id="features" data-aos="fade-up">
+    <div class="parchment-header">Why Join the Crew?</div>
+    <div class="parchment-subtitle">Unlock your potential, find your allies, and leave your mark!</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📢</div>
+        <div class="feature-title">Voice & Influence</div>
+        <div>Master the art of communication and become a leader who inspires the team.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗺️</div>
+        <div class="feature-title">Adventure & Discovery</div>
+        <div>Take on thrilling events and projects that challenge you to grow.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Treasures of Experience</div>
+        <div>Win accolades and collect memories that will last beyond university.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧭</div>
+        <div class="feature-title">Guides & Mentors</div>
+        <div>Get expert guidance from seniors and faculty as you navigate your path.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-title">Fellow Explorers</div>
+        <div>Meet friends, collaborators, and fellow dreamers from all walks of campus life.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recruitment Process Section -->
+  <section class="parchment-section" id="process" data-aos="fade-up">
+    <div class="parchment-header">Your Voyage Awaits: Recruitment Rounds</div>
+    <div class="parchment-subtitle">Chart your course through every adventure—only the boldest reach the treasure!</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🦜</div>
+        <div class="feature-title">Round 1: Interview</div>
+        <div>
+          Face the crew! Prove your wit, passion, and readiness to set sail.
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏴‍☠️</div>
+        <div class="feature-title">Round 2: The Treasure Hunt</div>
+        <div>
+          Navigate riddles and challenges—only those with sharp eyes and keen minds will uncover the next clue!
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚓</div>
+        <div class="feature-title">Round 3: Orientation</div>
+        <div>
+          Celebrate your discovery! Join the crew, claim your place, and prepare for the adventures ahead.
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Treasure Hunt Riddle Only Section -->
+  <section class="treasure-game-section" id="treasure-game" data-aos="fade-up">
+    <div class="treasure-game-header">Solve the Riddle!</div>
+    <div class="riddle" id="riddle">
+      I have cities, but no houses. I have mountains, but no trees.<br>
+      I have water, but no fish. What am I?
+    </div>
+    <div class="riddle-input-group" id="riddle-input-group">
+      <input class="riddle-input" id="riddle-answer" type="text" placeholder="Enter your answer...">
+      <button class="riddle-btn" onclick="checkRiddle()">Submit Answer</button>
+    </div>
+    <div class="treasure-game-status" id="treasure-status"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div>
+      &copy; 2025 NSU Communications Club · Designed for Adventurers<br>
+      <span style="font-size:0.92em; color:#be9b42;">Let the hunt begin!</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, easing: 'ease-out-cubic', once: true, offset: 60 });
+
+    function checkRiddle() {
+      const input = document.getElementById('riddle-answer');
+      const guess = input.value.trim().toLowerCase();
+      if (/^(a |the )?map[.!]?$/.test(guess)) {
+        document.getElementById('riddle-input-group').style.display = "none";
+        document.getElementById('riddle').innerHTML = "<b>Congratulations, explorer!<br>You have solved the riddle.<br><br>Whisper the phrase <span style='color:#b78e28;'>&quot;Parley at the Plaza&quot;</span> at our booth for a surprise reward!</b>";
+        document.getElementById('treasure-status').innerHTML = "";
+      } else {
+        input.style.borderColor = "#e53e3e";
+        input.value = "";
+        input.placeholder = "Try again...";
+        document.getElementById('treasure-status').innerText = "That's not quite it. Try again!";
+      }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('riddle-answer').placeholder = "What am I?";
+      }, 800);
+    });
+  </script>
+</body>
+
+</html>
+</body>
+
+</html>
