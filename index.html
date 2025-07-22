@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NSU Communications Club</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
   <script src="https://kit.fontawesome.com/38437f2655.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -170,7 +173,7 @@
       justify-content: center;
       text-align: center;
       background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(26, 26, 26, 0.6) 100%),
-                  url('assets/images/gallery/bg.png') center center/cover no-repeat;
+        url('assets/images/gallery/bg.png') center center/cover no-repeat;
       overflow: hidden;
     }
 
@@ -268,8 +271,17 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-      50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
     }
 
     /* Section Styling */
@@ -523,6 +535,122 @@
       color: var(--text-muted);
     }
 
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 2.1rem;
+      cursor: pointer;
+      z-index: 2002;
+    }
+
+    .sidebar-nav {
+      display: none;
+    }
+
+    .sidebar-overlay {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none !important;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -260px;
+        width: 240px;
+        height: 100vh;
+        background: rgba(24, 24, 24, 0.98);
+        box-shadow: -8px 0 24px #0008;
+        z-index: 2001;
+        padding: 2.4rem 1.3rem 1rem 1.3rem;
+        gap: 1.2rem;
+        transition: right 0.32s cubic-bezier(.7, .4, .2, 1.1);
+        border-left: 2px solid var(--primary-red-dark);
+        border-radius: 18px 0 0 18px;
+        overflow-y: auto;
+      }
+
+      .sidebar-nav.open {
+        right: 0;
+      }
+
+      .sidebar-nav a,
+      .sidebar-nav .dropdown>a {
+        font-size: 1.05rem;
+        color: var(--text-primary);
+        padding: 0.7rem 0;
+        border-radius: 7px;
+        transition: background 0.2s, color 0.2s;
+      }
+
+      .sidebar-nav a:hover,
+      .sidebar-nav .dropdown>a:hover {
+        background: var(--primary-red-dark);
+        color: #fff;
+      }
+
+      .sidebar-close {
+        position: absolute;
+        top: 12px;
+        right: 18px;
+        background: none;
+        border: none;
+        color: var(--primary-red);
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 2100;
+      }
+
+      .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      .sidebar-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .dropdown-content {
+        position: static;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        min-width: unset;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+
+      .dropdown-content a {
+        padding: 0.5rem 1rem;
+        border: none;
+        color: var(--text-primary);
+      }
+
+      .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .nav-container {
@@ -577,18 +705,24 @@
     }
 
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
     }
   </style>
 </head>
+
 <body>
   <!-- Loading Overlay -->
   <div class="loading-overlay" id="loadingOverlay">
     <div class="loading-spinner"></div>
   </div>
 
-  <!-- Navigation -->
+  <!-- Navigation
   <header class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html">
@@ -609,6 +743,52 @@
         <a href="partners.html">Our Partners</a>
       </nav>
     </div>
+  </header> -->
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html">
+        <img src="assets/images/logo_white.png" alt="NSUCC Logo" class="nav-logo">
+      </a>
+      <!-- Hamburger Button (Mobile) -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open Menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-links" id="desktopNav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <a href="executives.html">Executives</a>
+          <div class="dropdown-content">
+            <a href="executives.html">Executive Body</a>
+            <a href="subexecutives.html">Sub-Executive Body</a>
+          </div>
+        </div>
+        <a href="facultyadvisor.html">Faculty Advisor</a>
+        <a href="events.html">Events</a>
+        <a href="partners.html">Our Partners</a>
+      </nav>
+    </div>
+    <!-- Sidebar Navigation (Mobile Only) -->
+    <nav class="sidebar-nav" id="sidebarNav">
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close Menu">
+        <i class="fas fa-times"></i>
+      </button>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <div class="dropdown">
+        <a href="executives.html">Executives</a>
+        <div class="dropdown-content">
+          <a href="executives.html">Executive Body</a>
+          <a href="subexecutives.html">Sub-Executive Body</a>
+        </div>
+      </div>
+      <a href="facultyadvisor.html">Faculty Advisor</a>
+      <a href="events.html">Events</a>
+      <a href="partners.html">Our Partners</a>
+    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
   </header>
 
   <!-- Hero Section -->
@@ -621,7 +801,8 @@
     </div>
     <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
       <h1>NSU Communications Club</h1>
-      <p>Empowering students to become confident communicators and impactful leaders through speech, strategy, and synergy.</p>
+      <p>Empowering students to become confident communicators and impactful leaders through speech, strategy, and
+        synergy.</p>
       <a href="recruitment.html" class="hero-btn">
         <span>Join Our Community</span>
         <i class="fas fa-arrow-right"></i>
@@ -780,7 +961,7 @@
 
     // Gallery lightbox effect (simple implementation)
     document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', function() {
+      item.addEventListener('click', function () {
         const img = this.querySelector('img');
         // You can implement a proper lightbox here
         console.log('Gallery item clicked:', img.src);
@@ -791,7 +972,7 @@
     function createFloatingElements() {
       const hero = document.querySelector('.hero');
       const floatingContainer = hero.querySelector('.floating-elements');
-      
+
       for (let i = 0; i < 8; i++) {
         const element = document.createElement('div');
         element.className = 'floating-element';
@@ -801,9 +982,35 @@
         floatingContainer.appendChild(element);
       }
     }
+    // Sidebar toggle for mobile
+    const navToggle = document.getElementById('navToggle');
+    const sidebarNav = document.getElementById('sidebarNav');
+    const sidebarClose = document.getElementById('sidebarClose');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    navToggle.addEventListener('click', function () {
+      sidebarNav.classList.add('open');
+      sidebarOverlay.classList.add('open');
+    });
+    sidebarClose.addEventListener('click', function () {
+      sidebarNav.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+    sidebarOverlay.addEventListener('click', function () {
+      sidebarNav.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+    // Optional: close sidebar on any link click
+    sidebarNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebarNav.classList.remove('open');
+        sidebarOverlay.classList.remove('open');
+      });
+    });
 
     // Initialize floating elements
     createFloatingElements();
   </script>
 </body>
+
 </html>
